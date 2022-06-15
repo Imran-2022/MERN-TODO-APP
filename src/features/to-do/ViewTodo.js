@@ -14,21 +14,7 @@ const ViewTodo = () => {
       })
   }, [])
 
-  const handleDeleteBook = (id) => {
-    if (true) {
-      fetch(`http://localhost:8080/api/todo/${id}`, {
-        method: 'DELETE',
-      })
-        .then(res => res.json())// or res.text()) 
-        .then(res => {
-          if (res.deletedCount === 1) {
-            alert(`User ${id} deleted successfully`)
-            const newUser = todo.filter(ab => ab._id != id);
-            setTodo(newUser)
-          }
-        })
-    }
-  }
+
   const [text, setText] = useState("");
   const onSubmit = evt => {
     evt.preventDefault();
@@ -77,38 +63,20 @@ const ViewTodo = () => {
         text !== ""? search.length?search.map((todo, idx) => {
           const {_id, title, description, status} = todo;
       return <div key={idx}>
-        <p>TASKS : {title}</p>
+       <Link to={`/details/${_id}`}><p>TASKS : {title}</p></Link>
         <p>DESCRIPTION : {description}</p>
         <p>STATUS : {status}</p>
-        <Link to="/edit-todo" state={{ _id, title, description, status }}>
-          <button>Edit</button>
-        </Link>
-        <button
-          onClick={() => {
-            handleDeleteBook(_id);
-          }}
-        >
-          Delete
-        </button>
+       
       </div>
         }): <div>
         <h1 style={{ textAlign: 'center', marginTop: "150px", color: "#0000009c" }}>there's no available data</h1>
       </div>:todo.length&&todo.map((todoo, idx) => {
           const {_id, title, description, status} = todoo;
       return <div key={idx}>
-        <p>TASKS : {title}</p>
+        <Link to={`/details/${_id}`}><p>TASKS : {title}</p></Link>
         <p>DESCRIPTION : {description}</p>
         <p>STATUS : {status}</p>
-        <Link to="/edit-todo" state={{ _id, title, description, status }}>
-          <button>Edit</button>
-        </Link>
-        <button
-          onClick={() => {
-            handleDeleteBook(_id);
-          }}
-        >
-          Delete
-        </button>
+        
       </div>
         })
       }
