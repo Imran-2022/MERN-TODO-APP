@@ -33,9 +33,7 @@
   list-style-type: none;
   outline: none;
 }
-body {
-  background-color: beige;
-}
+
 nav {
   background-color: rgb(235, 155, 155);
   height: 5vh;
@@ -111,3 +109,4 @@ footer {
   font-weight: 900;
   font-size: 20px;
 }
+/* add todo */
