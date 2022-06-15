@@ -6,7 +6,6 @@ import ViewTodo from "../features/to-do/ViewTodo";
 import Navbar from "../layouts/Navigation/Navbar/Navbar";
 import Sidebar from "../layouts/Navigation/sidebar/Sidebar";
 import Error from "../pages/Error";
-import Home from "../pages/Home";
 const Index = () => {
     const [isopen, setisopen] = useState(false)
     const toggle = () => {
@@ -18,8 +17,7 @@ const Index = () => {
             <Navbar toggle={toggle} />
             <Sidebar isopen={isopen} toggle={toggle} />
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/home" element={<Home />} />
+                <Route path="/" element={<ViewTodo />} />
                 <Route path="/show-todo" element={<ViewTodo />} />
                 <Route path="/add-todo" element={<AddTodo />} />
                 <Route path="/edit-todo" element={<EditTodo />} />
