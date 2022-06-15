@@ -74,7 +74,7 @@ useEffect(() => {
           const { _id, title, description, status } = todo;
           return <div className="p-2 d-flex gap-5" key={idx}>
             <Link className="Link" to={`/details/${_id}`}><p>TASKS : {title}</p></Link>
-            <p>DESCRIPTION : {description}</p>
+            {/* <p>DESCRIPTION : {description}</p> */}
             <p>STATUS : <input type="checkbox" defaultChecked={status} onClick={() => {
               onClick(_id)
             }} /> {!status?"active":"completed"}</p>
@@ -86,7 +86,7 @@ useEffect(() => {
           const { _id, title, description, status } = todoo;
           return <div className="p-2 d-flex gap-5" key={idx}>
             <Link  className="Link" to={`/details/${_id}`}><p>TASKS : {title}</p></Link>
-            <p>DESCRIPTION : {description}</p>
+            {/* <p>DESCRIPTION : {description}</p> */}
             <p>STATUS : <input type="checkbox" defaultChecked={status} onClick={() => {
               onClick(_id)
             }} /> {!status?"active":"completed"}</p>

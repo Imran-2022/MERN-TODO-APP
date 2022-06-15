@@ -37,7 +37,7 @@ const EditTodo = () => {
                 if (result.modifiedCount > 0) {
                     alert('Updated')
                     // setUser({})
-                    navigate("/show-todo", { replace: true });
+                    navigate(`/details/${_id}`, { replace: true });
                 }else{
                     alert('nothing change')
                 }

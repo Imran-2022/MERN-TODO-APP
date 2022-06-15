@@ -30,10 +30,9 @@ const Details = () => {
     }
     return (
         <div className="m-5 p-5">
-            <p>{title}</p>
-            <p>{description}</p>
-            <p>{status}</p>
-            <p>{_id}</p>
+            <p>TITLE : {title}</p>
+            <p>DESCRIPTION : {description}</p>
+            <p>id : {_id}</p>
             <button className="btn btn-primary me-4"
                 onClick={() => {
                     handleDeleteBook(_id);
