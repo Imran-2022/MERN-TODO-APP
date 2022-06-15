@@ -13,9 +13,9 @@ const Index = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />
-                <Route path="/show-books" element={<ViewTodo />} />
-                <Route path="/add-book" element={<AddTodo />} />
-                <Route path="/edit-book" element={<EditTodo />} />
+                <Route path="/show-todo" element={<ViewTodo />} />
+                <Route path="/add-todo" element={<AddTodo />} />
+                <Route path="/edit-todo" element={<EditTodo />} />
                 <Route path="*" element={<Error />} />
             </Routes>
         </div>
