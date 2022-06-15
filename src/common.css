@@ -102,3 +102,7 @@ footer {
   align-items: center;
   padding: 1rem;
 }
+.Link {
+  color: white;
+  text-decoration: inherit;
+}
