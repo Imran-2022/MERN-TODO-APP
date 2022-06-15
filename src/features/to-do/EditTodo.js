@@ -21,12 +21,7 @@ const EditTodo = () => {
         updatedUser.description = updatedEmail;
         setUser(updatedUser)
     }
-    const handleStatusChange = (e) => {
-        const updatedEmail = e.target.value;
-        const updatedUser = { ...user }
-        updatedUser.status = updatedEmail;
-        setUser(updatedUser)
-    }
+
     const handleUpdate = (e) => {
         const url = `http://localhost:8080/api/todo/${_id}`;
         fetch(url, {
@@ -56,7 +51,6 @@ const EditTodo = () => {
             <form onSubmit={handleUpdate}>
                 <input type="text" onChange={handleTitleChange} value={user.title || ""} />
                 <input type="text" onChange={handleDescriptionChange} value={user.description || ""} />
-                <input type="text" onChange={handleStatusChange} value={user.status || ""} />
                 <input type="submit" value="update" />
             </form>
         </div>
