@@ -29,12 +29,12 @@ const Details = () => {
         }
     }
     return (
-        <div>
+        <div className="m-5 p-5">
             <p>{title}</p>
             <p>{description}</p>
             <p>{status}</p>
             <p>{_id}</p>
-            <button
+            <button className="btn btn-primary me-4"
                 onClick={() => {
                     handleDeleteBook(_id);
                 }}
@@ -42,7 +42,7 @@ const Details = () => {
                 Delete
             </button>
             <Link to="/edit-todo" state={{ _id, title, description, status }}>
-                <button>Edit</button>
+                <button className="btn btn-primary">Edit</button>
             </Link>
         </div>
 

@@ -101,8 +101,12 @@ footer {
   padding: 1rem;
 }
 .Link {
-  color: white;
+  color: rgb(0, 0, 0);
   text-decoration: inherit;
+}
+.Link:hover{
+  color: rgb(0, 0, 0);
+
 }
 .active{
   color: rgb(232, 248, 0) !important;

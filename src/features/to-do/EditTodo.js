@@ -47,7 +47,7 @@ const EditTodo = () => {
     }
 
     return (
-        <div>
+        <div className="m-5 p-5">
             <form onSubmit={handleUpdate}>
                 <input type="text" onChange={handleTitleChange} value={user.title || ""} />
                 <input type="text" onChange={handleDescriptionChange} value={user.description || ""} />

@@ -19,7 +19,7 @@ const AddTodo = () => {
     }
     
     return (
-        <div>
+        <div  className="m-5 p-5">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input {...register("title", { required: true, maxLength: 20 })} placeholder="title" />
                 <input  {...register("description")} placeholder="description" />

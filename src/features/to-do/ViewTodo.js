@@ -7,7 +7,6 @@ const ViewTodo = () => {
     fetch('http://localhost:8080/api/todo')
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setTodo(data)
       })
   }, [])
@@ -24,7 +23,6 @@ const ViewTodo = () => {
 useEffect(() => {
   if(id){
     const data= todo.filter(dt =>dt._id==id)
-    console.log(...data)
     const url = `http://localhost:8080/api/todo/${id}`;
     fetch(url, {
         method: 'PUT',
@@ -36,8 +34,8 @@ useEffect(() => {
     })
         .then(response => response.json())
         .then(result => {
-            if (result) {
-               console.log(result)
+            if (result.modifiedCount) {
+               alert("status updated")
             }else{
                 alert('nothing change')
             }
@@ -59,8 +57,8 @@ useEffect(() => {
   };
   return (
 
-    <div>
-      <form className='user-search'>
+    <div className="p-5">
+      <form className='user-search my-4'>
         <input
           type="text"
           name="text"
@@ -74,18 +72,20 @@ useEffect(() => {
       {
         text !== "" ? search.length ? search.map((todo, idx) => {
           const { _id, title, description, status } = todo;
-          return <div key={idx}>
-            <Link to={`/details/${_id}`}><p>TASKS : {title}</p></Link>
+          return <div className="p-2 d-flex gap-5" key={idx}>
+            <Link className="Link" to={`/details/${_id}`}><p>TASKS : {title}</p></Link>
             <p>DESCRIPTION : {description}</p>
-            <p>STATUS : {status}</p>
+            <p>STATUS : <input type="checkbox" defaultChecked={status} onClick={() => {
+              onClick(_id)
+            }} /> {!status?"active":"completed"}</p>
 
           </div>
         }) : <div>
           <h1 style={{ textAlign: 'center', marginTop: "150px", color: "#0000009c" }}>there's no available data</h1>
         </div> : todo.length && todo.map((todoo, idx) => {
           const { _id, title, description, status } = todoo;
-          return <div key={idx}>
-            <Link to={`/details/${_id}`}><p>TASKS : {title}</p></Link>
+          return <div className="p-2 d-flex gap-5" key={idx}>
+            <Link  className="Link" to={`/details/${_id}`}><p>TASKS : {title}</p></Link>
             <p>DESCRIPTION : {description}</p>
             <p>STATUS : <input type="checkbox" defaultChecked={status} onClick={() => {
               onClick(_id)
