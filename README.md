@@ -2,7 +2,8 @@
 
 ## Overview
 
-**The To-Do List app allows a user to create, read, update or delete to-do tasks. **
+**The To-Do List app allows a user to create, read, update or delete to-do tasks.**
+
 A to-do task:
 
 1. has a title
