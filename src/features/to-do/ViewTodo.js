@@ -37,9 +37,10 @@ const ViewTodo = () => {
         .then(result => {
           if (result.modifiedCount) {
             alert("status updated")
-          } else {
-            alert('nothing change')
-          }
+          } 
+          // else {
+          //   alert('nothing change')
+          // }
         })
     }
 
@@ -62,6 +63,11 @@ const ViewTodo = () => {
         console.log('request here ', res.data.deletedCount);
         if (res.data.deletedCount) {
           alert(res.data.deletedCount)
+         const newTODO= todo.filter((item) => {
+            return item.status==false;
+          })
+          console.log(newTODO)
+          setTodo(newTODO)
         }
       })
       .catch(function (error) {
@@ -82,7 +88,7 @@ const ViewTodo = () => {
         />
 
       </form>
-      <button className="w-25 btn btn-primary" onClick={handleAllDelete}>delete Completed Task</button>
+      <button className="w-25 btn btn-primary my-5" onClick={handleAllDelete}>delete Completed Task</button>
       {
         todo.length && <table className="w-75 m-auto my-5">
           <thead>
