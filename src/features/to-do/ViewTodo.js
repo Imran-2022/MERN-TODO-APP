@@ -12,12 +12,13 @@ const ViewTodo = () => {
       })
   }, [])
   const [id, setId] = useState("")
-
+  const [filterblood, setFilterBlood] = useState([])
   const [text, setText] = useState("");
 
   const onChange = evt => setText(evt.target.value);
   useEffect(() => {
-    const searchResult = todo && todo.filter(dt => dt.title.toLowerCase().includes(text.toLowerCase()) || dt.description.toLowerCase().includes(text.toLowerCase()))
+    const searchResult = todo && todo.filter(dt => dt.title.toLowerCase().includes(text.toLowerCase()))
+    // || dt.description.toLowerCase().includes(text.toLowerCase())
     setSearchResult(searchResult)
   }, [text])
 
@@ -37,7 +38,7 @@ const ViewTodo = () => {
         .then(result => {
           if (result.modifiedCount) {
             alert("status updated")
-          } 
+          }
           // else {
           //   alert('nothing change')
           // }
@@ -63,8 +64,8 @@ const ViewTodo = () => {
         console.log('request here ', res.data.deletedCount);
         if (res.data.deletedCount) {
           alert(res.data.deletedCount)
-         const newTODO= todo.filter((item) => {
-            return item.status==false;
+          const newTODO = todo.filter((item) => {
+            return item.status == false;
           })
           console.log(newTODO)
           setTodo(newTODO)
@@ -74,21 +75,61 @@ const ViewTodo = () => {
         console.log(error);
       })
   }
+
+
+  // filter todo . 
+
+  const filterImage = (fimage) => {
+    setFilterBlood(todo)
+    if (fimage === "ALL") {
+      setFilterBlood(todo)
+    }
+    else {
+      const filterImages = todo.filter((x) => {
+        // lastDonateDate
+        if (x.lastDonateDate) {
+          const date1 = new Date(x.lastDonateDate);
+          const date2 = new Date();
+          const diffTime = Math.abs(date2 - date1);
+          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+          if (diffDays > 90) {
+            return x.bloodGroup === fimage;
+          }
+        }
+        else {
+          return x.bloodGroup === fimage;
+        }
+      })
+      setFilterBlood(filterImages)
+    }
+  }
   return (
 
     <div className="p-5">
-      <form className='user-search my-4'>
-        <input
-          type="text"
-          name="text"
-          placeholder="Search by first or last name"
-          value={text}
-          onChange={onChange}
+      <div className="filterTodo">
+        <Link to="/add-todo" className="btn btn-primary">ADD TO DO</Link>
+        
+        <form className='user-search my-4'>
+          <input
+            type="text"
+            name="text"
+            placeholder="Search by first or last name"
+            value={text}
+            onChange={onChange}
 
-        />
+          />
 
-      </form>
-      <button className="w-25 btn btn-primary my-5" onClick={handleAllDelete}>delete Completed Task</button>
+        </form>
+        <button className="w-25 btn btn-primary my-5" onClick={handleAllDelete}>delete Completed Task</button>
+        <div className="catagories py-5 ms-5">
+          <label for="todoFilter">Filter : &nbsp;</label>
+          <select id="todoFilter" name="todoFilter" onChange={(e) => filterImage(e.target.value)}>
+            <option selected="selected" value="ALL">ALL</option>
+            <option value={true}>COMPLETED</option>
+            <option value={false}>ACTIVE</option>
+          </select>
+        </div>
+      </div>
       {
         todo.length && <table className="w-75 m-auto my-5">
           <thead>
