@@ -80,35 +80,32 @@ const ViewTodo = () => {
   // filter todo . 
 
   const filterImage = (fimage) => {
+    console.log(fimage)
     setFilterBlood(todo)
     if (fimage === "ALL") {
       setFilterBlood(todo)
     }
-    else {
-      const filterImages = todo.filter((x) => {
-        // lastDonateDate
-        if (x.lastDonateDate) {
-          const date1 = new Date(x.lastDonateDate);
-          const date2 = new Date();
-          const diffTime = Math.abs(date2 - date1);
-          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-          if (diffDays > 90) {
-            return x.bloodGroup === fimage;
-          }
-        }
-        else {
-          return x.bloodGroup === fimage;
-        }
-      })
-      setFilterBlood(filterImages)
+    if (fimage == 2) {
+      setFilterBlood(todo.filter((x) => {
+        return Boolean(x.status) === Boolean(false);
+      }))
+
+    }
+    if (fimage == 1) {
+      setFilterBlood(todo.filter((x) => {
+        return Boolean(x.status) == Boolean(true);
+      }))
+
     }
   }
+
+  console.log(filterblood)
   return (
 
     <div className="p-5">
       <div className="filterTodo">
         <Link to="/add-todo" className="btn btn-primary">ADD TO DO</Link>
-        
+
         <form className='user-search my-4'>
           <input
             type="text"
@@ -125,13 +122,36 @@ const ViewTodo = () => {
           <label for="todoFilter">Filter : &nbsp;</label>
           <select id="todoFilter" name="todoFilter" onChange={(e) => filterImage(e.target.value)}>
             <option selected="selected" value="ALL">ALL</option>
-            <option value={true}>COMPLETED</option>
-            <option value={false}>ACTIVE</option>
+            <option value={1}>COMPLETED</option>
+            <option value={2}>ACTIVE</option>
           </select>
         </div>
       </div>
       {
-        todo.length && <table className="w-75 m-auto my-5">
+
+        filterblood.length ? <table className="w-75 m-auto my-5">
+          <thead>
+            <tr>
+              <th>NO</th>
+              <th>TASKS</th>
+              <th>STATUS</th>
+            </tr>
+          </thead>
+          {filterblood.map((todo, idx) => {
+            const { _id, title, description, status } = todo;
+            return <>
+              <tbody key={idx}>
+                <tr>
+                  <td>{idx + 1}</td>
+                  <td><Link className="Link" to={`/details/${_id}`}><p>{title}</p></Link></td>
+                  <td><input type="checkbox" defaultChecked={status} onClick={() => {
+                    onClick(_id)
+                  }} /> {!status ? "active" : "completed"}</td>
+                </tr>
+              </tbody>
+            </>
+          })}
+        </table> : todo.length && <table className="w-75 m-auto my-5">
           <thead>
             <tr>
               <th>NO</th>
