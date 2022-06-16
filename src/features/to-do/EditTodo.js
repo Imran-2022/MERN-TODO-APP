@@ -48,10 +48,10 @@ const EditTodo = () => {
 
     return (
         <div className="m-5 p-5">
-            <form onSubmit={handleUpdate}>
-                <input type="text" onChange={handleTitleChange} value={user.title || ""} />
-                <input type="text" onChange={handleDescriptionChange} value={user.description || ""} />
-                <input type="submit" value="update" />
+            <form className="d-flex form-add flex-column gap-1 w-50"  onSubmit={handleUpdate}>
+                <input className='w-100' type="text" onChange={handleTitleChange} value={user.title || ""} />
+                <textarea rows="4" cols="50"  onChange={handleDescriptionChange} value={user.description || ""} />
+                <input className='w-100 btn btn-primary' type="submit" value="UPDATE TODO" />
             </form>
         </div>
     );

@@ -117,3 +117,38 @@ footer {
 input[type="checkbox"]{
   width: 20px;
 }
+
+.form-add{
+  min-height: 50vh;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+/* table */
+.table {
+  padding: 20px;
+  width: 80%;
+  margin: 30px auto;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  color: hsl(219deg 6% 42%);
+}
+
+td,
+th {
+  border: 1px solid rgb(0, 0, 0) !important;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

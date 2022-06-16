@@ -20,10 +20,10 @@ const AddTodo = () => {
     
     return (
         <div  className="m-5 p-5">
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("title", { required: true, maxLength: 20 })} placeholder="title" />
-                <input  {...register("description")} placeholder="description" />
-                <input type="submit" value="add Data" />
+            <form className="d-flex form-add flex-column gap-1 w-50" onSubmit={handleSubmit(onSubmit)}>
+                <input className='w-100' {...register("title", { required: true, maxLength: 20 })} placeholder="title"  autoFocus={true}/>
+                <textarea rows="4" cols="50"  {...register("description")} placeholder="description" />
+                <input className='w-100 btn btn-primary' type="submit" value="ADD TODO" />
             </form>
         </div>
     );

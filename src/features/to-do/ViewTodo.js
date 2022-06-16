@@ -60,7 +60,7 @@ const ViewTodo = () => {
     axios.delete('http://localhost:8080/api/todo')
       .then(res => {
         console.log('request here ', res.data.deletedCount);
-        if(res.data.deletedCount){
+        if (res.data.deletedCount) {
           alert(res.data.deletedCount)
         }
       })
@@ -84,31 +84,49 @@ const ViewTodo = () => {
       </form>
       <button className="w-25 btn btn-primary" onClick={handleAllDelete}>delete Completed Task</button>
       {
-        text !== "" ? search.length ? search.map((todo, idx) => {
-          const { _id, title, description, status } = todo;
-          return <div className="p-2 d-flex gap-5" key={idx}>
-            <Link className="Link" to={`/details/${_id}`}><p>TASKS : {title}</p></Link>
-            {/* <p>DESCRIPTION : {description}</p> */}
-            <p>STATUS : <input type="checkbox" defaultChecked={status} onClick={() => {
-              onClick(_id)
-            }} /> {!status ? "active" : "completed"}</p>
+        todo.length && <table className="w-75 m-auto my-5">
+          <thead>
+            <tr>
+              <th>NO</th>
+              <th>TASKS</th>
+              <th>STATUS</th>
+            </tr>
+          </thead>
 
-          </div>
-        }) : <div>
-          <h1 style={{ textAlign: 'center', marginTop: "150px", color: "#0000009c" }}>there's no available data</h1>
-        </div> : todo.length && todo.map((todoo, idx) => {
-          const { _id, title, description, status } = todoo;
-          return <div className="p-2 d-flex gap-5" key={idx}>
-            <Link className="Link" to={`/details/${_id}`}><p>TASKS : {title}</p></Link>
-            {/* <p>DESCRIPTION : {description}</p> */}
-            <p>STATUS : <input type="checkbox" defaultChecked={status} onClick={() => {
-              onClick(_id)
-            }} /> {!status ? "active" : "completed"}</p>
+          {
+            text !== "" ? search.length ? search.map((todo, idx) => {
+              const { _id, title, description, status } = todo;
+              return <>
+                <tbody key={idx}>
+                  <tr>
+                    <td>{idx + 1}</td>
+                    <td><Link className="Link" to={`/details/${_id}`}><p>{title}</p></Link></td>
+                    <td><input type="checkbox" defaultChecked={status} onClick={() => {
+                      onClick(_id)
+                    }} /> {!status ? "active" : "completed"}</td>
+                  </tr>
+                </tbody>
+              </>
+            }) : <div>
+              <h1 style={{ textAlign: 'center', marginTop: "150px", color: "#0000009c" }}>there's no available data</h1>
+            </div> : todo.length && todo.map((todoo, idx) => {
+              const { _id, title, description, status } = todoo;
+              return <>
+                <tbody key={idx}>
+                  <tr>
+                    <td>{idx + 1}</td>
+                    <td><Link className="Link" to={`/details/${_id}`}><p>{title}</p></Link></td>
+                    <td><input type="checkbox" defaultChecked={status} onClick={() => {
+                      onClick(_id)
+                    }} /> {!status ? "active" : "completed"}</td>
+                  </tr>
+                </tbody>
 
-          </div>
-        })
+              </>
+            })
+          }
+        </table>
       }
-
 
     </div>
   );
