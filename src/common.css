@@ -186,3 +186,16 @@ tr:nth-child(even) {
   align-items: center;
   flex-direction: column;
 }
+/* loadingbtn */
+.loadingbtn{
+  min-height: 70vh;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+
+}
