@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Button,Spinner } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 const Details = () => {
     const { abc } = useParams()
     const navigate = useNavigate();
 
     const [todo, setTodo] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:8080/api/todo/${abc}`)
+        fetch(`https://powerful-citadel-69552.herokuapp.com/api/todo/${abc}`)
             .then(res => res.json())
             .then(data => {
                 setTodo(data)
@@ -16,7 +16,7 @@ const Details = () => {
     const { description, status, title, _id } = todo
     const handleDeleteBook = (id) => {
         if (true) {
-            fetch(`http://localhost:8080/api/todo/${id}`, {
+            fetch(`https://powerful-citadel-69552.herokuapp.com/api/todo/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())// or res.text()) 
@@ -36,16 +36,16 @@ const Details = () => {
                     <p>DESCRIPTION : {description}</p>
                     {/* <p>id : {_id}</p> */}
                     <div>
-                    <button className="btn btn-primary me-4"
-                        onClick={() => {
-                            handleDeleteBook(_id);
-                        }}
-                    >
-                        Delete
-                    </button>
-                    <Link to="/edit-todo" state={{ _id, title, description, status }}>
-                        <button className="btn btn-primary">Edit</button>
-                    </Link>
+                        <button className="btn btn-primary me-4"
+                            onClick={() => {
+                                handleDeleteBook(_id);
+                            }}
+                        >
+                            Delete
+                        </button>
+                        <Link to="/edit-todo" state={{ _id, title, description, status }}>
+                            <button className="btn btn-primary">Edit</button>
+                        </Link>
                     </div>
 
                 </div> : <div className="loadingbtn">

@@ -5,11 +5,12 @@ const ViewTodo = () => {
   const [todo, setTodo] = useState([])
   const [search, setSearchResult] = useState([])
   useEffect(() => {
-    fetch('http://localhost:8080/api/todo')
+    fetch('https://powerful-citadel-69552.herokuapp.com/api/todo')
       .then(res => res.json())
       .then(data => {
         setTodo(data)
       })
+    // https://powerful-citadel-69552.herokuapp.com/
   }, [])
   const [id, setId] = useState("")
   const [filterblood, setFilterBlood] = useState([])
@@ -25,7 +26,7 @@ const ViewTodo = () => {
   useEffect(() => {
     if (id) {
       const data = todo.filter(dt => dt._id == id)
-      const url = `http://localhost:8080/api/todo/${id}`;
+      const url = `https://powerful-citadel-69552.herokuapp.com/api/todo/${id}`;
       fetch(url, {
         method: 'PUT',
         headers: {
@@ -59,7 +60,7 @@ const ViewTodo = () => {
   };
 
   const handleAllDelete = () => {
-    axios.delete('http://localhost:8080/api/todo')
+    axios.delete('https://powerful-citadel-69552.herokuapp.com/api/todo')
       .then(res => {
         console.log('request here ', res.data.deletedCount);
         if (res.data.deletedCount) {

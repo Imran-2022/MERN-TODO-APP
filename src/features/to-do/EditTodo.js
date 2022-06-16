@@ -4,14 +4,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 const EditTodo = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const {_id, title, description, status}=location.state
+    const { _id, title, description, status } = location.state
     // 
-    const [user, setUser] = useState({ title: title, description: description, status:status});
+    const [user, setUser] = useState({ title: title, description: description, status: status });
 
 
     const handleTitleChange = (e) => {
         const updatedName = e.target.value;
-        const updatedUser = { title: updatedName, description: user.description,status: user.status}
+        const updatedUser = { title: updatedName, description: user.description, status: user.status }
         setUser(updatedUser)
     }
 
@@ -23,7 +23,7 @@ const EditTodo = () => {
     }
 
     const handleUpdate = (e) => {
-        const url = `http://localhost:8080/api/todo/${_id}`;
+        const url = `https://powerful-citadel-69552.herokuapp.com/api/todo/${_id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -38,7 +38,7 @@ const EditTodo = () => {
                     alert('Updated')
                     // setUser({})
                     navigate(`/details/${_id}`, { replace: true });
-                }else{
+                } else {
                     alert('nothing change')
                 }
             })
@@ -48,9 +48,9 @@ const EditTodo = () => {
 
     return (
         <div className="m-5 p-5">
-            <form className="d-flex form-add flex-column gap-1 w-50"  onSubmit={handleUpdate}>
+            <form className="d-flex form-add flex-column gap-1 w-50" onSubmit={handleUpdate}>
                 <input className='w-100' type="text" onChange={handleTitleChange} value={user.title || ""} />
-                <textarea rows="4" cols="50"  onChange={handleDescriptionChange} value={user.description || ""} />
+                <textarea rows="4" cols="50" onChange={handleDescriptionChange} value={user.description || ""} />
                 <input className='w-100 btn btn-primary' type="submit" value="UPDATE TODO" />
             </form>
         </div>
