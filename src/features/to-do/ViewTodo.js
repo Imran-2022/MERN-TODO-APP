@@ -78,9 +78,9 @@ const ViewTodo = () => {
 
 
   // filter todo . 
-
+  const [filterV, setFilter] = useState("")
   const filterImage = (fimage) => {
-    console.log(fimage)
+    setFilter(fimage)
     setFilterBlood(todo)
     if (fimage === "ALL") {
       setFilterBlood(todo)
@@ -129,7 +129,7 @@ const ViewTodo = () => {
       </div>
       {
 
-        filterblood.length ? <table className="w-75 m-auto my-5">
+        filterV ? <table className="w-75 m-auto my-5">
           <thead>
             <tr>
               <th>NO</th>

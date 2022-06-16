@@ -1,13 +1,15 @@
 /* custom scrollbar */
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 8px;
 }
-::-webkit-scrollbar-thumb{
-  background: linear-gradient(transparent,#001aff);
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(transparent, #001aff);
   border-radius: 6px;
 }
-::-webkit-scrollbar-thumb:hover{
-  background: linear-gradient(transparent,#d4103a);
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(transparent, #d4103a);
 }
 
 
@@ -16,7 +18,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200;300;400&display=swap');
 
 /* universal */
-*{
+* {
   padding: 0;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -42,11 +44,13 @@ nav {
   align-items: center;
   padding: 1rem;
 }
+
 .nav-link {
   color: black;
   margin: 0 1rem 0 0;
   transition: all 0.3s;
 }
+
 .active {
   color: white;
 }
@@ -57,10 +61,12 @@ main {
   justify-content: center;
   align-items: flex-start;
 }
+
 h2 {
   text-align: center;
   margin: 3rem;
 }
+
 table {
   margin: 3rem;
   border-collapse: collapse;
@@ -79,6 +85,7 @@ button {
   border-radius: 0.5rem;
   cursor: pointer;
 }
+
 button:hover {
   background-color: black;
   color: white;
@@ -87,6 +94,7 @@ button:hover {
 .form-field {
   margin: 1rem;
 }
+
 input {
   padding: 0.2rem;
 }
@@ -99,31 +107,36 @@ footer {
   align-items: center;
   padding: 1rem;
 }
+
 .Link {
   color: rgb(0, 0, 0);
   text-decoration: inherit;
 }
-.Link:hover{
+
+.Link:hover {
   color: rgb(0, 0, 0);
 
 }
-.active{
+
+.active {
   color: rgb(232, 248, 0) !important;
   font-weight: 900;
   font-size: 20px;
 }
+
 /* add todo */
-input[type="checkbox"]{
+input[type="checkbox"] {
   width: 20px;
 }
 
-.form-add{
+.form-add {
   min-height: 50vh;
   width: 90%;
   margin: auto;
   display: flex;
   justify-content: center;
 }
+
 /* table */
 .table {
   padding: 20px;
@@ -153,10 +166,23 @@ tr:nth-child(even) {
 }
 
 /* fitler todo */
-.filterTodo{
+.filterTodo {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+/* login form */
+.login-form {
+  min-height: 80vh;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
